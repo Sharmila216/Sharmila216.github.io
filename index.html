@@ -1,194 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>SHARMILA | StudyMate ePortfolio | SDG 4</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --orange:#F7971E;
-  --gold:#FFD200;
-  --teal:#7FFFD4;
-  --teal-dark:#00C9A7;
-  --navy:#0F2027;
-  --navy-mid:#203A43;
-  --navy-light:#2C5364;
-  --white:#ffffff;
-  --text-muted:rgba(255,255,255,0.6);
+  --teal:#0B6E6E;
+  --teal-light:#0E9090;
+  --coral:#E84B3A;
+  --coral-light:#FF6B5B;
+  --amber:#F5A623;
+  --bg:#F7F5F0;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --ink2:#333333;
+  --ink3:#666666;
+  --border:#E0DDD8;
+  --card:#FFFFFF;
+  --teal-bg:#EAF5F5;
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:'Space Grotesk',sans-serif;
-  background:linear-gradient(160deg,#0F2027 0%,#203A43 45%,#2C5364 100%);
-  min-height:100vh;color:var(--white);overflow-x:hidden;
-}
-
-/* BUBBLES CANVAS */
-#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
 
 /* NAV */
-nav{
-  position:sticky;top:0;z-index:1000;
-  background:rgba(15,32,39,0.92);backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(247,151,30,0.25);
-  padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;
-}
-.nav-brand{
-  font-family:'Poppins',sans-serif;font-weight:900;font-size:1.15rem;
-  background:linear-gradient(90deg,var(--orange),var(--gold),var(--teal));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  letter-spacing:2px;text-transform:uppercase;
-}
-.nav-links{display:flex;gap:0.2rem;list-style:none}
-.nav-links a{
-  color:rgba(255,255,255,0.7);text-decoration:none;
-  font-size:0.83rem;font-weight:500;padding:0.4rem 0.75rem;
-  border-radius:6px;transition:all 0.2s;letter-spacing:0.5px;
-}
-.nav-links a:hover{background:rgba(247,151,30,0.15);color:var(--gold)}
+nav{position:sticky;top:0;z-index:1000;background:rgba(247,245,240,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'Fraunces',serif;font-size:1.05rem;font-weight:800;color:var(--teal)}
+.nav-brand-dot{width:28px;height:28px;background:var(--teal);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem}
+.nav-links{display:flex;gap:.2rem;list-style:none}
+.nav-links a{color:var(--ink3);text-decoration:none;font-size:.83rem;font-weight:500;padding:.4rem .85rem;border-radius:6px;transition:.15s}
+.nav-links a:hover{background:var(--teal-bg);color:var(--teal)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-.hamburger span{display:block;width:24px;height:2px;background:var(--gold);border-radius:2px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px}
 
 /* HERO */
-#home{
-  min-height:100vh;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;padding:6rem 2rem 4rem;
-  position:relative;z-index:1;
-}
-.hero-badge{
-  display:inline-block;
-  background:rgba(247,151,30,0.15);border:1px solid rgba(247,151,30,0.5);
-  color:var(--gold);font-size:0.75rem;font-weight:700;
-  letter-spacing:3px;text-transform:uppercase;
-  padding:0.4rem 1.4rem;border-radius:100px;margin-bottom:1.5rem;
-}
-.hero-gif-container{
-  width:200px;height:200px;border-radius:50%;
-  border:3px solid var(--orange);
-  box-shadow:0 0 50px rgba(247,151,30,0.4),0 0 100px rgba(127,255,212,0.15);
-  overflow:hidden;margin:0 auto 2rem;
-  background:var(--navy-mid);
-  display:flex;align-items:center;justify-content:center;
-}
-.hero-gif-container svg{width:155px;height:155px}
-.hero-name{
-  font-family:'Poppins',sans-serif;
-  font-size:clamp(1.8rem,5vw,3.6rem);font-weight:900;line-height:1.05;margin-bottom:0.5rem;
-  background:linear-gradient(135deg,#ffffff 0%,#FFD200 40%,#F7971E 70%,#7FFFD4 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  letter-spacing:3px;text-transform:uppercase;
-}
-.hero-sub{font-size:0.95rem;color:rgba(127,255,212,0.85);font-weight:500;margin-bottom:0.4rem;letter-spacing:0.5px}
-.hero-matric{font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem;letter-spacing:1px}
-.hero-intro{max-width:700px;font-size:1rem;line-height:1.85;color:rgba(255,255,255,0.78);margin-bottom:2rem}
-.hero-intro strong{color:var(--gold)}
-.sdg-pill{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:linear-gradient(135deg,rgba(247,151,30,0.2),rgba(127,255,212,0.12));
-  border:1px solid rgba(247,151,30,0.4);
-  border-radius:100px;padding:0.65rem 1.6rem;
-  font-size:0.88rem;font-weight:600;color:var(--gold);margin-bottom:2rem;
-}
-.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-primary{
-  background:linear-gradient(135deg,var(--orange),var(--gold));
-  color:var(--navy);border:none;padding:0.78rem 2rem;border-radius:8px;
-  font-size:0.9rem;font-weight:700;cursor:pointer;text-decoration:none;
-  transition:all 0.2s;font-family:'Space Grotesk',sans-serif;letter-spacing:0.5px;
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(247,151,30,0.45)}
-.btn-outline{
-  background:transparent;color:var(--teal);
-  border:1px solid rgba(127,255,212,0.5);padding:0.78rem 2rem;border-radius:8px;
-  font-size:0.9rem;font-weight:600;cursor:pointer;text-decoration:none;
-  transition:all 0.2s;font-family:'Space Grotesk',sans-serif;
-}
-.btn-outline:hover{background:rgba(127,255,212,0.1);border-color:var(--teal)}
+#home{min-height:100vh;display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:5rem;padding:8rem 3rem 5rem;max-width:1200px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:var(--teal-bg);color:var(--teal);font-size:.7rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:.38rem 1.1rem;border-radius:100px;margin-bottom:1.6rem;border:1px solid rgba(11,110,110,.2)}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(2.4rem,4.8vw,4rem);font-weight:900;line-height:1.02;letter-spacing:-2px;margin-bottom:1.4rem;color:var(--ink)}
+.hero-title .accent{color:var(--teal);display:block}
+.hero-desc{font-size:.97rem;line-height:1.85;color:var(--ink3);margin-bottom:2rem;max-width:500px}
+.hero-desc strong{color:var(--ink);font-weight:600}
 
-/* SECTIONS */
-section{padding:5rem 2rem;max-width:1100px;margin:0 auto;position:relative;z-index:1}
-.section-label{font-size:0.7rem;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.75rem}
-.section-title{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:1rem;color:var(--white)}
-.section-divider{width:60px;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold),var(--teal),transparent);border-radius:2px;margin-bottom:2.5rem}
+/* IDENTITY CARD - professional block */
+.identity-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:1.8rem;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.identity-card-header{background:var(--teal);padding:1rem 1.5rem;display:flex;align-items:center;gap:.8rem}
+.identity-avatar{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.identity-header-text{}
+.identity-name{font-family:'Fraunces',serif;font-size:1rem;font-weight:900;color:#fff;letter-spacing:-.3px;line-height:1.1}
+.identity-role{font-size:.72rem;color:rgba(255,255,255,.75);margin-top:.1rem;font-weight:500}
+.identity-body{display:grid;grid-template-columns:1fr 1fr}
+.identity-cell{padding:.85rem 1.2rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.identity-cell:nth-child(even){border-right:none}
+.identity-cell:nth-last-child(-n+2){border-bottom:none}
+.identity-label{font-size:.6rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--ink3);margin-bottom:.22rem}
+.identity-value{font-size:.84rem;font-weight:600;color:var(--ink);line-height:1.3}
 
-/* CARDS */
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
-.card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(247,151,30,0.18);
-  border-radius:16px;padding:1.5rem;
-  transition:all 0.3s;position:relative;overflow:hidden;
-}
-.card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--orange),var(--gold),var(--teal),transparent);
-  border-radius:16px 16px 0 0;
-}
-.card:hover{transform:translateY(-5px);border-color:rgba(247,151,30,0.45);background:rgba(255,255,255,0.08);box-shadow:0 20px 50px rgba(247,151,30,0.12)}
-.card-number{font-size:0.7rem;font-weight:700;letter-spacing:2.5px;color:var(--teal-dark);text-transform:uppercase;margin-bottom:0.4rem}
-.card-title{font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;color:var(--white)}
-.card-desc{font-size:0.84rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem}
-.video-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;margin-bottom:1rem;background:rgba(0,0,0,0.4);border:1px solid rgba(247,151,30,0.12)}
-.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
-.reflection-box{background:rgba(247,151,30,0.07);border-left:3px solid var(--orange);padding:0.8rem 1rem;border-radius:0 8px 8px 0;font-size:0.83rem;line-height:1.65;color:rgba(255,255,255,0.72);font-style:italic}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.8rem}
+.hero-tag{background:var(--white);border:1px solid var(--border);color:var(--ink2);font-size:.72rem;font-weight:500;padding:.28rem .75rem;border-radius:100px;transition:.15s}
+.hero-tag:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-bg)}
 
-/* PROJECT TAGS */
-.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem}
-.tag{background:rgba(127,255,212,0.1);border:1px solid rgba(127,255,212,0.28);color:var(--teal);font-size:0.7rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:100px;letter-spacing:0.4px}
-.btn-github{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:rgba(255,210,0,0.1);border:1px solid rgba(255,210,0,0.3);
-  color:var(--gold);padding:0.55rem 1.2rem;border-radius:8px;
-  font-size:0.83rem;font-weight:600;text-decoration:none;
-  transition:all 0.2s;margin-top:1rem;font-family:'Space Grotesk',sans-serif;
-}
-.btn-github:hover{background:rgba(255,210,0,0.18);border-color:var(--gold)}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-primary{background:var(--teal);color:#fff;border:none;padding:.8rem 2rem;border-radius:10px;font-size:.88rem;font-weight:700;cursor:pointer;text-decoration:none;transition:.2s;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:.4rem}
+.btn-primary:hover{background:var(--teal-light);transform:translateY(-2px);box-shadow:0 10px 28px rgba(11,110,110,.3)}
+.btn-secondary{background:var(--white);color:var(--teal);border:1.5px solid var(--teal);padding:.8rem 2rem;border-radius:10px;font-size:.88rem;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s;font-family:'Inter',sans-serif}
+.btn-secondary:hover{background:var(--teal-bg);transform:translateY(-2px)}
 
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem}
-.skill-item{background:rgba(255,255,255,0.05);border:1px solid rgba(247,151,30,0.18);border-radius:12px;padding:1.25rem 1rem;text-align:center;transition:all 0.2s}
-.skill-item:hover{background:rgba(247,151,30,0.1);border-color:rgba(247,151,30,0.4);transform:translateY(-3px);box-shadow:0 8px 20px rgba(247,151,30,0.15)}
-.skill-icon{font-size:2rem;margin-bottom:0.5rem}
-.skill-name{font-size:0.81rem;font-weight:600;color:rgba(255,255,255,0.85)}
+/* SDG CARD RIGHT SIDE */
+.hero-right{display:flex;flex-direction:column;gap:1.2rem}
+.sdg-card{background:var(--teal);border-radius:20px;padding:2rem 2rem 2rem;color:#fff;position:relative;overflow:hidden}
+.sdg-card::before{content:'';position:absolute;top:-50px;right:-50px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%}
+.sdg-card::after{content:'';position:absolute;bottom:-40px;left:-30px;width:180px;height:180px;background:rgba(255,255,255,0.04);border-radius:50%}
+.sdg-pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:.32rem .9rem;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1rem;position:relative;z-index:1}
+.sdg-card h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;margin-bottom:.75rem;line-height:1.2;position:relative;z-index:1}
+.sdg-card p{font-size:.85rem;line-height:1.72;opacity:.88;position:relative;z-index:1}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.stat-box{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center;transition:.2s}
+.stat-box:hover{border-color:var(--teal);background:var(--teal-bg)}
+.stat-num{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:900;color:var(--teal);line-height:1}
+.stat-label{font-size:.68rem;font-weight:600;color:var(--ink3);margin-top:.3rem;letter-spacing:.3px}
+
+/* SECTION */
+.section-outer{border-top:1px solid var(--border);padding:5rem 3rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;letter-spacing:-1px;margin-bottom:.5rem;color:var(--ink)}
+.section-sub{font-size:.95rem;color:var(--ink3);line-height:1.7;max-width:640px;margin-bottom:3rem}
+
+/* LAB LAYOUT - like Mealify: screenshots left, text right */
+.lab-block{margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid var(--border)}
+.lab-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.lab-inner{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.lab-inner.reverse{direction:rtl}
+.lab-inner.reverse > *{direction:ltr}
+
+/* PHONE MOCKUPS */
+.phones-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.phone-wrap{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.phone{background:#1A1A1A;border-radius:32px;padding:10px 8px 14px;box-shadow:0 20px 60px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.1);position:relative;border:1px solid #333}
+.phone::before{content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);width:44px;height:5px;background:#333;border-radius:3px}
+.phone img{width:100%;border-radius:22px;display:block;aspect-ratio:9/19;object-fit:cover;background:#2A2A2A}
+.phone-ph{width:100%;aspect-ratio:9/19;border-radius:22px;background:linear-gradient(160deg,#f0ede8,#e8e4de);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.phone-ph-icon{font-size:1.8rem;opacity:.35}
+.phone-ph-text{font-size:.65rem;color:#999;text-align:center;line-height:1.5;padding:0 .5rem}
+.phone-caption{font-size:.7rem;color:var(--ink3);font-weight:500;text-align:center}
+
+/* LAB TEXT SIDE */
+.lab-text{}
+.lab-badge{display:inline-block;background:var(--teal-bg);color:var(--teal);font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.3rem .8rem;border-radius:6px;margin-bottom:.8rem;border:1px solid rgba(11,110,110,.15)}
+.lab-title{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:900;letter-spacing:-.5px;margin-bottom:.7rem;color:var(--ink);line-height:1.2}
+.lab-desc{font-size:.88rem;line-height:1.75;color:var(--ink3);margin-bottom:1.2rem}
+.reflection-box{background:var(--teal-bg);border-left:3px solid var(--teal);padding:.9rem 1.1rem;border-radius:0 10px 10px 0;margin-bottom:1.3rem}
+.reflection-label{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem}
+.reflection-text{font-size:.83rem;line-height:1.7;color:var(--ink2);font-style:italic}
+.watch-btn{display:inline-flex;align-items:center;gap:.5rem;background:#0B6E6E;color:#fff;padding:.65rem 1.4rem;border-radius:8px;font-size:.83rem;font-weight:700;text-decoration:none;transition:.2s;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.watch-btn:hover{background:#0E9090;transform:translateY(-1px);box-shadow:0 8px 20px rgba(11,110,110,.3)}
+.watch-btn svg{flex-shrink:0}
+
+/* VIDEO MODAL */
+.video-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center;padding:2rem}
+.video-modal.open{display:flex}
+.video-modal-inner{background:#000;border-radius:16px;overflow:hidden;width:100%;max-width:800px;position:relative}
+.video-modal-inner iframe{width:100%;aspect-ratio:16/9;border:none;display:block}
+.video-close{position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;font-family:'Inter',sans-serif;line-height:1}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+/* PROJECT INFO ROWS */
+.proj-info-rows{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.2rem}
+.proj-info-row{background:var(--teal-bg);border:1px solid rgba(11,110,110,.15);border-radius:10px;padding:.75rem 1rem;display:flex;flex-direction:column;gap:.2rem}
+.proj-info-label{font-size:.62rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--teal)}
+.proj-info-value{font-size:.84rem;color:var(--ink2);line-height:1.6}
+
+.proj-card{background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:.2s}
+.proj-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.1);transform:translateY(-4px)}
+.proj-top{padding:2rem 2rem 0}
+.proj-badge-row{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem}
+.proj-num{background:var(--teal);color:#fff;font-size:.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:.28rem .7rem;border-radius:5px}
+.proj-type{background:var(--teal-bg);color:var(--teal);font-size:.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:.28rem .7rem;border-radius:5px;border:1px solid rgba(11,110,110,.2)}
+.proj-title{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:900;letter-spacing:-.5px;margin-bottom:.6rem;color:var(--ink);line-height:1.2}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem}
+.proj-tag{background:var(--teal-bg);border:1px solid rgba(11,110,110,.2);color:var(--teal);font-size:.67rem;font-weight:600;padding:.22rem .7rem;border-radius:100px}
+.proj-desc{font-size:.85rem;line-height:1.75;color:var(--ink3);margin-bottom:1.2rem}
+.proj-screenshots{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;padding:0 2rem;margin-bottom:1.5rem}
+.proj-reflection{margin:0 2rem 1.4rem;background:var(--teal-bg);border-left:3px solid #0B6E6E;padding:.85rem 1rem;border-radius:0 10px 10px 0}
+.proj-reflection-label{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0B6E6E;margin-bottom:.3rem}
+.proj-reflection-text{font-size:.82rem;line-height:1.7;color:var(--ink2);font-style:italic}
+.proj-bottom{padding:0 2rem 2rem;display:flex;gap:.7rem;flex-wrap:wrap}
+.btn-github{display:inline-flex;align-items:center;gap:.5rem;background:var(--white);border:1.5px solid var(--border);color:var(--ink2);padding:.55rem 1.2rem;border-radius:8px;font-size:.81rem;font-weight:600;text-decoration:none;transition:.2s;font-family:'Inter',sans-serif}
+.btn-github:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-bg)}
 
 /* REFLECTION */
-.reflection-full{background:rgba(255,255,255,0.05);border:1px solid rgba(247,151,30,0.2);border-radius:16px;padding:2.5rem;position:relative;overflow:hidden}
-.reflection-full::before{content:'\201C';font-family:'Poppins',sans-serif;font-size:8rem;color:rgba(247,151,30,0.1);position:absolute;top:-1rem;left:1rem;line-height:1;pointer-events:none}
-.reflection-full p{font-size:1.05rem;line-height:1.9;color:rgba(255,255,255,0.8);position:relative;z-index:1}
+.reflect-projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:0}
+.reflect-proj-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:.2s;position:relative;overflow:hidden}
+.reflect-proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--teal-light))}
+.reflect-proj-card:hover{box-shadow:0 12px 40px rgba(11,110,110,.1);border-color:rgba(11,110,110,.3);transform:translateY(-3px)}
+.reflect-proj-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.reflect-proj-icon{width:48px;height:48px;background:var(--teal-bg);border:1px solid rgba(11,110,110,.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.reflect-proj-num{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:.15rem}
+.reflect-proj-name{font-family:'Fraunces',serif;font-size:1rem;font-weight:900;color:var(--ink);line-height:1.2;letter-spacing:-.3px}
+.reflect-proj-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
+.reflect-tag{background:var(--teal-bg);border:1px solid rgba(11,110,110,.2);color:var(--teal);font-size:.65rem;font-weight:600;padding:.2rem .65rem;border-radius:100px}
+.reflect-proj-desc{font-size:.85rem;line-height:1.75;color:var(--ink3);margin-bottom:1.1rem}
+.reflect-proj-desc strong{color:var(--ink);font-weight:600}
+.reflect-highlight{background:var(--teal-bg);border-left:3px solid var(--teal);padding:.85rem 1rem;border-radius:0 10px 10px 0;font-size:.82rem;line-height:1.7;color:var(--ink2)}
+.reflect-highlight-label{font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem}
+.reflection-full{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:3rem;position:relative;overflow:hidden}
+.reflection-full::before{content:'\201C';font-family:'Fraunces',serif;font-size:10rem;color:rgba(11,110,110,.07);position:absolute;top:-2rem;left:1.5rem;line-height:1;pointer-events:none}
+.reflection-full p{font-size:1.05rem;line-height:1.95;color:var(--ink2);position:relative;z-index:1}
+@media(max-width:700px){.reflect-projects-grid{grid-template-columns:1fr}}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.9rem}
+.skill-item{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1rem;text-align:center;transition:.2s;cursor:default}
+.skill-item:hover{border-color:var(--teal);background:var(--teal-bg);transform:translateY(-3px);box-shadow:0 8px 20px rgba(11,110,110,.1)}
+.skill-icon{font-size:1.8rem;margin-bottom:.45rem}
+.skill-name{font-size:.76rem;font-weight:600;color:var(--ink2)}
 
 /* RESOURCES */
-.resources-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-.resource-item{background:rgba(255,255,255,0.05);border:1px solid rgba(127,255,212,0.15);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:0.75rem}
-.resource-icon{width:36px;height:36px;border-radius:8px;background:rgba(127,255,212,0.1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.resource-title{font-size:0.88rem;font-weight:600;color:var(--white);margin-bottom:0.2rem}
-.resource-desc{font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.5}
+.resources-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.res-item{background:var(--white);border:1px solid rgba(11,110,110,.18);border-radius:14px;padding:1.2rem 1.3rem;display:flex;align-items:flex-start;gap:.9rem;transition:.2s;position:relative;overflow:hidden}
+.res-item::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--teal);border-radius:14px 0 0 14px}
+.res-item:hover{border-color:var(--teal);box-shadow:0 6px 20px rgba(11,110,110,.12);transform:translateY(-2px)}
+.res-icon{width:40px;height:40px;border-radius:10px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;box-shadow:0 4px 12px rgba(11,110,110,.25)}
+.res-title{font-size:.88rem;font-weight:700;color:var(--teal);margin-bottom:.25rem}
+.res-desc{font-size:.76rem;color:var(--ink3);line-height:1.6}
 
 /* FOOTER */
-footer{background:rgba(15,32,39,0.97);border-top:1px solid rgba(247,151,30,0.2);text-align:center;padding:2.5rem 2rem;color:rgba(255,255,255,0.45);font-size:0.85rem;position:relative;z-index:1}
+footer{background:var(--teal);color:rgba(255,255,255,.7);text-align:center;padding:3rem 2rem;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:rgba(255,255,255,.05);border-radius:50%}
+footer::after{content:'';position:absolute;bottom:-40px;left:-40px;width:200px;height:200px;background:rgba(255,255,255,.04);border-radius:50%}
+.footer-name{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:900;color:#fff;margin-bottom:.5rem;letter-spacing:1px;text-transform:uppercase;position:relative;z-index:1}
+footer p{position:relative;z-index:1}
+.footer-sdg{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:100px;padding:.3rem 1rem;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-top:1rem}
+
+/* VIDEO MODAL */
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;align-items:center;justify-content:center;padding:2rem}
+#modal.open{display:flex}
+#modal-inner{background:#000;border-radius:14px;overflow:hidden;width:100%;max-width:860px;position:relative}
+#modal-inner iframe{width:100%;aspect-ratio:16/9;border:none;display:block}
+#modal-close{position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;font-family:'Inter',sans-serif;opacity:.8}
+#modal-close:hover{opacity:1}
 
 /* MOBILE */
-@media(max-width:768px){
+@media(max-width:900px){
+  #home{grid-template-columns:1fr;gap:2.5rem;padding:6rem 1.5rem 3rem}
+  .hero-right{order:-1}
+  .stats-row{grid-template-columns:repeat(3,1fr)}
+  .lab-inner{grid-template-columns:1fr}
+  .lab-inner.reverse{direction:ltr}
+  .projects-grid{grid-template-columns:1fr}
+  .section-outer{padding:3rem 1.5rem}
+  nav{padding:0 1.5rem}
   .hamburger{display:flex}
-  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(15,32,39,0.98);flex-direction:column;padding:1rem;border-bottom:1px solid rgba(247,151,30,0.2);gap:0.25rem}
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(247,245,240,.98);flex-direction:column;padding:1rem;border-bottom:1px solid var(--border);gap:.15rem}
   .nav-links.open{display:flex}
-  .nav-links a{padding:0.65rem 1rem;font-size:0.95rem}
-  section{padding:3.5rem 1.25rem}
-  .cards-grid{grid-template-columns:1fr}
+  .nav-links a{padding:.65rem 1rem;font-size:.9rem}
+}
+@media(max-width:600px){
+  .phones-row{grid-template-columns:1fr 1fr}
+  .proj-screenshots{grid-template-columns:1fr 1fr}
+  .hero-info-grid{grid-template-columns:1fr}
+  .hero-info-item{border-right:none}
 }
 </style>
 </head>
 <body>
 
-<!-- RAINBOW BUBBLE CANVAS -->
-<canvas id="bg-canvas"></canvas>
+<!-- VIDEO MODAL -->
+<div id="modal">
+  <div id="modal-inner">
+    <button id="modal-close" onclick="closeModal()">×</button>
+    <iframe id="modal-iframe" src="" title="Demo video" allowfullscreen allow="autoplay"></iframe>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-brand">StudyMate ✦ Portfolio</div>
-  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+  <div class="nav-brand">
+    <div class="nav-brand-dot">📚</div>
+    StudyMate ePortfolio
+  </div>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle nav">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links">
@@ -202,233 +258,503 @@ footer{background:rgba(15,32,39,0.97);border-top:1px solid rgba(247,151,30,0.2);
 </nav>
 
 <!-- HERO -->
-<header id="home">
-  <div class="hero-badge">📚 SDG 4 — Quality Education</div>
+<div id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">📱 Mobile Application Development · e-Portfolio</div>
+    <h1 class="hero-title">
+      Hi, I'm Sharmila —
+      <span class="accent">I build apps that make learning easier.</span>
+    </h1>
+    <p class="hero-desc">This portfolio documents my journey building <strong>StudyMate</strong>, a full-featured Android learning app, across five hands-on labs and two projects — from basic UI screens to a cloud-connected, sensor-aware platform.</p>
 
-  <div class="hero-gif-container" role="img" aria-label="Animated study illustration">
-    <svg viewBox="0 0 155 155" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="bookL" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#203A43"/><stop offset="100%" stop-color="#0F2027"/></linearGradient>
-        <linearGradient id="bookR" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2C5364"/><stop offset="100%" stop-color="#203A43"/></linearGradient>
-      </defs>
-      <!-- outer ring -->
-      <circle cx="77" cy="77" r="65" fill="none" stroke="#F7971E" stroke-width="0.8" opacity="0.3"/>
-      <!-- pulse orange -->
-      <circle cx="77" cy="77" r="55" fill="none" stroke="#F7971E" stroke-width="1.5" opacity="0.5">
-        <animate attributeName="r" values="55;74" dur="2.4s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.5;0" dur="2.4s" repeatCount="indefinite"/>
-      </circle>
-      <!-- pulse teal -->
-      <circle cx="77" cy="77" r="55" fill="none" stroke="#7FFFD4" stroke-width="1" opacity="0.3">
-        <animate attributeName="r" values="55;74" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.3;0" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="77" cy="77" r="53" fill="rgba(15,32,39,0.75)"/>
-      <!-- floating book -->
-      <g>
-        <animateTransform attributeName="transform" type="translate" values="0,0;0,-8;0,0" dur="3.2s" repeatCount="indefinite"/>
-        <rect x="36" y="48" width="36" height="46" rx="3" fill="url(#bookL)" stroke="#F7971E" stroke-width="1.2"/>
-        <rect x="72" y="48" width="36" height="46" rx="3" fill="url(#bookR)" stroke="#7FFFD4" stroke-width="1.2"/>
-        <rect x="70" y="48" width="4" height="46" fill="#FFD200" opacity="0.9"/>
-        <line x1="42" y1="60" x2="64" y2="60" stroke="#FFD200" stroke-width="1.1" opacity="0.7"/>
-        <line x1="42" y1="67" x2="64" y2="67" stroke="#FFD200" stroke-width="1.1" opacity="0.7"/>
-        <line x1="42" y1="74" x2="64" y2="74" stroke="#FFD200" stroke-width="1.1" opacity="0.7"/>
-        <line x1="42" y1="81" x2="56" y2="81" stroke="#FFD200" stroke-width="1.1" opacity="0.5"/>
-        <line x1="78" y1="60" x2="101" y2="60" stroke="#7FFFD4" stroke-width="1.1" stroke-dasharray="23" stroke-dashoffset="23" opacity="0.9">
-          <animate attributeName="stroke-dashoffset" values="23;0;23" dur="2.8s" repeatCount="indefinite"/>
-        </line>
-        <line x1="78" y1="67" x2="101" y2="67" stroke="#7FFFD4" stroke-width="1.1" stroke-dasharray="23" stroke-dashoffset="23" opacity="0.9">
-          <animate attributeName="stroke-dashoffset" values="23;0;23" dur="2.8s" begin="0.5s" repeatCount="indefinite"/>
-        </line>
-        <line x1="78" y1="74" x2="94" y2="74" stroke="#7FFFD4" stroke-width="1.1" stroke-dasharray="16" stroke-dashoffset="16" opacity="0.9">
-          <animate attributeName="stroke-dashoffset" values="16;0;16" dur="2.8s" begin="1s" repeatCount="indefinite"/>
-        </line>
-        <text x="95" y="54" font-size="11" fill="#FFD200"><animate attributeName="opacity" values="1;0.1;1" dur="1.5s" repeatCount="indefinite"/>✦</text>
-        <text x="39" y="55" font-size="9" fill="#F7971E"><animate attributeName="opacity" values="0.8;0.1;0.8" dur="2s" begin="0.5s" repeatCount="indefinite"/>★</text>
-        <text x="100" y="80" font-size="8" fill="#7FFFD4"><animate attributeName="opacity" values="0.6;0;0.6" dur="1.8s" begin="0.9s" repeatCount="indefinite"/>✦</text>
-        <!-- pencil -->
-        <g>
-          <animateTransform attributeName="transform" type="translate" values="98,40;98,37;98,40" dur="1.2s" repeatCount="indefinite"/>
-          <rect x="-3" y="-20" width="6" height="22" rx="1" fill="#FFD200"/>
-          <polygon points="-3,2 3,2 0,9" fill="#F7971E"/>
-          <rect x="-3" y="-23" width="6" height="4" rx="1" fill="#7FFFD4"/>
-        </g>
-      </g>
-      <!-- orbiting dots -->
-      <circle r="5" fill="#F7971E" opacity="0.9">
-        <animateMotion dur="5s" repeatCount="indefinite" path="M77,22 A55,55 0 1,1 76.9,22"/>
-      </circle>
-      <circle r="4" fill="#7FFFD4" opacity="0.8">
-        <animateMotion dur="5s" begin="2.5s" repeatCount="indefinite" path="M77,22 A55,55 0 1,1 76.9,22"/>
-      </circle>
-      <circle r="3" fill="#FFD200" opacity="0.7">
-        <animateMotion dur="7s" begin="1s" repeatCount="indefinite" path="M77,22 A55,55 0 1,1 76.9,22"/>
-      </circle>
-    </svg>
+    <div class="hero-tags">
+      <span class="hero-tag">Kotlin</span>
+      <span class="hero-tag">Jetpack Compose</span>
+      <span class="hero-tag">Room Database</span>
+      <span class="hero-tag">Firebase</span>
+      <span class="hero-tag">REST API</span>
+      <span class="hero-tag">Sensors</span>
+    </div>
+
+    <!-- IDENTITY CARD -->
+    <div class="identity-card">
+      <div class="identity-card-header">
+        <div class="identity-avatar">👩‍💻</div>
+        <div class="identity-header-text">
+          <div class="identity-name">Sharmila A/P K J Vadivazagan</div>
+          <div class="identity-role">Android Developer · UKM Student</div>
+        </div>
+      </div>
+      <div class="identity-body">
+        <div class="identity-cell">
+          <div class="identity-label">Matric No.</div>
+          <div class="identity-value">A216155</div>
+        </div>
+        <div class="identity-cell">
+          <div class="identity-label">Instructor</div>
+          <div class="identity-value">Cikgu Izwan</div>
+        </div>
+        <div class="identity-cell">
+          <div class="identity-label">Programme</div>
+          <div class="identity-value">Bachelor of IT (Digital)</div>
+        </div>
+        <div class="identity-cell">
+          <div class="identity-label">University</div>
+          <div class="identity-value">UKM · TK2323/TM2213</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#labs" class="btn-primary">Explore My Labs →</a>
+      <a href="#projects" class="btn-secondary">View Projects</a>
+    </div>
   </div>
 
-  <h1 class="hero-name">SHARMILA A/P K J VADIVAZAGAN</h1>
-  <p class="hero-sub">Bachelor of Information Technology (Digital) &nbsp;·&nbsp; UKM</p>
-  <p class="hero-matric">Matric No: A216155 &nbsp;|&nbsp; Instructor: Cikgu Izwan</p>
+  <div class="hero-right">
+    <div class="sdg-card">
+      <div class="sdg-pill">🎓 SDG 4 · Quality Education</div>
+      <h3>Learning, without barriers.</h3>
+      <p>StudyMate aligns with <strong>SDG 4: Quality Education</strong>, because every student deserves tools that help them study smarter — not just harder. From vocabulary lookup to peer study tips, every feature is built with learners in mind.</p>
+    </div>
 
-  <p class="hero-intro">
-    By day I debug Kotlin, by night I dream in composables — I am <strong>SHARMILA</strong>, 
-    a tech-passionate IT student who turned a blank Android Studio project into 
-    <strong>StudyMate</strong>, a fully-featured learning app powered by Room, Firebase, REST APIs, 
-    and real device sensors. I believe the best code is the kind that makes someone's life genuinely easier, 
-    and that is exactly what SDG 4 inspires me to build every single day. 🚀
-  </p>
-
-  <div class="sdg-pill">
-    🎓 SDG 4: Quality Education — because knowledge should have no barriers
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Labs Completed</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Technologies</div>
+      </div>
+    </div>
   </div>
-
-  <div class="hero-cta">
-    <a href="#labs" class="btn-primary">Explore My Labs →</a>
-    <a href="#projects" class="btn-outline">View Projects</a>
-  </div>
-</header>
+</div>
 
 <!-- LABS -->
-<section id="labs">
-  <p class="section-label">Academic Work</p>
-  <h2 class="section-title">Lab Exercises</h2>
-  <div class="section-divider"></div>
-  <div class="cards-grid">
+<div class="section-outer" id="labs">
+<div class="section-inner">
+  <p class="section-eyebrow">Academic Work</p>
+  <h2 class="section-title">Labs</h2>
+  <p class="section-sub">Five labs, each adding a new layer to the StudyMate app — from the first composable layout to a working local database. Each lab shows two app screenshots, a demo video, and a short reflection.</p>
 
-    <div class="card">
-      <p class="card-number">Lab 01</p>
-      <h3 class="card-title">UI Design with Jetpack Compose</h3>
-      <p class="card-desc">Building the foundation of Android UI using composable functions, layouts, and theming in Jetpack Compose.</p>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/g92jRnYlyPc" title="Lab 1 UI Design"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+  <!-- LAB 1 -->
+  <div class="lab-block">
+    <div class="lab-inner">
+      <div class="phones-row">
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Lab%201_1.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Lab 1 Screen 1"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">lab1_screen1.jpg</div></div>
+          </div>
+          <span class="phone-caption">Home screen</span>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Lab%201_1.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Lab 1 Screen 2"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">lab1_screen2.jpg</div></div>
+          </div>
+          <span class="phone-caption">UI components</span>
+        </div>
       </div>
-      <div class="reflection-box">
-        Lab 1 was my first real encounter with Jetpack Compose's declarative UI style — a complete mindshift from XML. I learned to build layouts using composable functions and apply Material Design principles cleanly. The foundation built here echoed through every screen I designed afterwards.
+      <div class="lab-text">
+        <div class="lab-badge">Lab 01 · UI Design</div>
+        <h3 class="lab-title">Building the Home Screen with Jetpack Compose</h3>
+        <p class="lab-desc">Laid out StudyMate's first screen in Jetpack Compose — learning composable functions, column/row layouts, and Material Design principles from scratch. A complete mindshift from XML-based UI.</p>
+        <div class="reflection-box">
+          <div class="reflection-label">Reflection</div>
+          <p class="reflection-text">Lab 1 was my first real encounter with Compose's declarative UI style. I learned to build layouts using composable functions and apply Material Design principles cleanly. The foundation built here echoed through every screen I designed afterwards.</p>
+        </div>
+        <button class="watch-btn" onclick="openModal('https://www.youtube.com/embed/g92jRnYlyPc')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch Demo
+        </button>
       </div>
     </div>
-
-    <div class="card">
-      <p class="card-number">Lab 02</p>
-      <h3 class="card-title">User Interaction & State Management</h3>
-      <p class="card-desc">Implementing click events, user input handling, and Compose state management using remember and mutableStateOf.</p>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/sSBGp0vY9ls" title="Lab 2 Interaction"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="reflection-box">
-        This lab made state management finally click for me — watching UI re-render live as state changed was genuinely satisfying. I practised button taps, text inputs, and conditional displays with confidence. Reactive UI thinking became second nature from here onward.
-      </div>
-    </div>
-
-    <div class="card">
-      <p class="card-number">Lab 03</p>
-      <h3 class="card-title">Material Design 3 Theming</h3>
-      <p class="card-desc">Applying Material Design 3 components, colour schemes, typography, and dynamic theming in a Compose application.</p>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/lsdHKeN47yE" title="Lab 3 Material Design"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="reflection-box">
-        Lab 3 unlocked my eye for design — learning M3's token system showed me how professional apps maintain visual consistency. I explored colour harmonies, shape systems, and adaptive layouts across screen sizes. This directly shaped StudyMate's polished look and feel.
-      </div>
-    </div>
-
-    <div class="card">
-      <p class="card-number">Lab 04</p>
-      <h3 class="card-title">Navigation & Multi-Screen Apps</h3>
-      <p class="card-desc">Implementing Jetpack Navigation Compose to build multi-screen applications with back stack management and argument passing.</p>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/WBu_GOLJXqo" title="Lab 4 Navigation"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="reflection-box">
-        Navigation Compose was the lab that transformed my single-screen experiments into a real multi-screen app. Defining navigation graphs, passing arguments between destinations, and gracefully managing the back stack felt like assembling a puzzle. My apps finally felt production-ready after this.
-      </div>
-    </div>
-
-    <div class="card">
-      <p class="card-number">Lab 05</p>
-      <h3 class="card-title">Room Database & Local Persistence</h3>
-      <p class="card-desc">Integrating Room database to store, retrieve, update, and delete data locally with DAO patterns and Flow.</p>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/E-BND0YR3X0" title="Lab 5 Room Database"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="reflection-box">
-        Room was the toughest lab and also my favourite — mastering Entities, DAOs, and ViewModel-connected Flows felt like levelling up as a developer. Local persistence turned my app from a toy into something that actually remembers its users. This became the heartbeat of StudyMate's data layer.
-      </div>
-    </div>
-
   </div>
-</section>
+
+  <!-- LAB 2 -->
+  <div class="lab-block">
+    <div class="lab-inner reverse">
+      <div class="phones-row">
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Lab%202_1.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Lab 2 Screen 1"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">lab2_screen1.jpg</div></div>
+          </div>
+          <span class="phone-caption">Button interactions</span>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Lab%202_2.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Lab 2 Screen 2"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">lab2_screen2.jpg</div></div>
+          </div>
+          <span class="phone-caption">State updates live</span>
+        </div>
+      </div>
+      <div class="lab-text">
+        <div class="lab-badge">Lab 02 · Interaction</div>
+        <h3 class="lab-title">User Interaction & State Management</h3>
+        <p class="lab-desc">Wired up the behaviour behind the UI — click events, text input handling, and Compose state management using remember and mutableStateOf. Watching UI re-render live as state changed was genuinely satisfying.</p>
+        <div class="reflection-box">
+          <div class="reflection-label">Reflection</div>
+          <p class="reflection-text">This lab made state management finally click for me. I practised button taps, text inputs, and conditional displays with confidence. Reactive UI thinking became second nature from here onward.</p>
+        </div>
+        <button class="watch-btn" onclick="openModal('https://www.youtube.com/embed/sSBGp0vY9ls')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch Demo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAB 3 -->
+  <div class="lab-block">
+    <div class="lab-inner">
+      <div class="phones-row">
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Lab%203_1.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Lab 3 Screen 1"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">lab3_screen1.jpg</div></div>
+          </div>
+          <span class="phone-caption">Light theme</span>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Lab%203_2.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Lab 3 Screen 2"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">lab3_screen2.jpg</div></div>
+          </div>
+          <span class="phone-caption">Dark theme</span>
+        </div>
+      </div>
+      <div class="lab-text">
+        <div class="lab-badge">Lab 03 · Material Design</div>
+        <h3 class="lab-title">Theming with Material Design 3</h3>
+        <p class="lab-desc">Defined StudyMate's colour, typography, and shape tokens using Material Design 3. Explored how editing a single theme file changes the entire app's visual identity — a true design system experience.</p>
+        <div class="reflection-box">
+          <div class="reflection-label">Reflection</div>
+          <p class="reflection-text">Lab 3 unlocked my eye for design — learning M3's token system showed me how professional apps maintain visual consistency. This directly shaped StudyMate's polished look and feel.</p>
+        </div>
+        <button class="watch-btn" onclick="openModal('https://www.youtube.com/embed/lsdHKeN47yE')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch Demo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAB 4 -->
+  <div class="lab-block">
+    <div class="lab-inner reverse">
+      <div class="phones-row">
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Lab%204_1.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Lab 4 Screen 1"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">lab4_screen1.jpg</div></div>
+          </div>
+          <span class="phone-caption">Navigation flow</span>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Lab%204_2.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Lab 4 Screen 2"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">lab4_screen2.jpg</div></div>
+          </div>
+          <span class="phone-caption">Multi-screen</span>
+        </div>
+      </div>
+      <div class="lab-text">
+        <div class="lab-badge">Lab 04 · Navigation</div>
+        <h3 class="lab-title">Bottom Nav & Multi-Screen Flow</h3>
+        <p class="lab-desc">Connected screens with Navigation Compose and a bottom navigation bar, passing arguments between destinations and managing the back stack gracefully. My app finally felt like a real product.</p>
+        <div class="reflection-box">
+          <div class="reflection-label">Reflection</div>
+          <p class="reflection-text">Navigation Compose transformed my single-screen experiments into a real multi-screen app. Planning the navigation graph before writing composables saves hours of rework — a lesson I carried into both projects.</p>
+        </div>
+        <button class="watch-btn" onclick="openModal('https://www.youtube.com/embed/WBu_GOLJXqo')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch Demo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAB 5 -->
+  <div class="lab-block">
+    <div class="lab-inner">
+      <div class="phones-row">
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Lab%205_1.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Lab 5 Screen 1"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">lab5_screen1.jpg</div></div>
+          </div>
+          <span class="phone-caption">Room data list</span>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Lab%205_2.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Lab 5 Screen 2"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">lab5_screen2.jpg</div></div>
+          </div>
+          <span class="phone-caption">Persists on restart</span>
+        </div>
+      </div>
+      <div class="lab-text">
+        <div class="lab-badge">Lab 05 · Room Database</div>
+        <h3 class="lab-title">Saving Data with Room Persistence</h3>
+        <p class="lab-desc">Added a Room database to persist user data across app restarts — mastering Entities, DAOs, and ViewModel-connected Flows. Seeing data survive a restart was the moment the app felt like a real product.</p>
+        <div class="reflection-box">
+          <div class="reflection-label">Reflection</div>
+          <p class="reflection-text">Room was the toughest lab and also my favourite. Local persistence turned my app from a toy into something that actually remembers its users. This became the heartbeat of StudyMate's data layer.</p>
+        </div>
+        <button class="watch-btn" onclick="openModal('https://www.youtube.com/embed/E-BND0YR3X0')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch Demo
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
 
 <!-- PROJECTS -->
-<section id="projects">
-  <p class="section-label">Featured Work</p>
+<div class="section-outer" id="projects" style="background:var(--white)">
+<div class="section-inner">
+  <p class="section-eyebrow">Putting It Together</p>
   <h2 class="section-title">Projects</h2>
-  <div class="section-divider"></div>
-  <div class="cards-grid">
+  <p class="section-sub">Two end-to-end builds — the core StudyMate navigation app, and a cloud-connected, sensor-aware full learning platform. Each follows the required template: problem statement, VSR video, GitHub repo, and lessons learned.</p>
 
-    <div class="card">
-      <p class="card-number">Project 01</p>
-      <h3 class="card-title">StudyMate — Core Navigation App</h3>
-      <div class="project-tags">
-        <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span>
-        <span class="tag">Navigation</span><span class="tag">Material Design 3</span>
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-badge-row">
+          <span class="proj-num">Project 01</span>
+          <span class="proj-type">Lab 4 + Working Features</span>
+        </div>
+        <h3 class="proj-title">StudyMate</h3>
+        <div class="proj-tags">
+          <span class="proj-tag">Kotlin</span>
+          <span class="proj-tag">Jetpack Compose</span>
+          <span class="proj-tag">Navigation</span>
+          <span class="proj-tag">Material Design 3</span>
+        </div>
+
+        <!-- INFO ROWS -->
+        <div class="proj-info-rows">
+          <div class="proj-info-row">
+            <div class="proj-info-label">📱 App Name</div>
+            <div class="proj-info-value">StudyMate — Core Navigation App</div>
+          </div>
+          <div class="proj-info-row">
+            <div class="proj-info-label">❓ Problem Statement</div>
+            <div class="proj-info-value">Students struggle to organise tasks and study resources in one clean place. StudyMate delivers a structured multi-screen app where users can manage tasks, track exams, and navigate study content without friction.</div>
+          </div>
+          <div class="proj-info-row">
+            <div class="proj-info-label">🎓 SDG Alignment</div>
+            <div class="proj-info-value">SDG 4: Quality Education — providing students with a free, organised digital tool to support their academic journey.</div>
+          </div>
+        </div>
       </div>
-      <p class="card-desc">Students struggle to organise tasks and study resources in one clean place. StudyMate (Project 1) delivers a structured multi-screen app where users manage tasks, track exams, and navigate study content without friction.</p>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/ZrazGDsYcjk" title="Project 1 VSR StudyMate"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+
+      <div class="proj-screenshots">
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Project%201_1.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Project 1 Screen 1"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">proj1_screen1.jpg</div></div>
+          </div>
+          <span class="phone-caption">Home screen</span>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Project%201_2.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Project 1 Screen 2"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">proj1_screen2.jpg</div></div>
+          </div>
+          <span class="phone-caption">Task management</span>
+        </div>
       </div>
-      <div class="reflection-box">
-        Project 1 was where Labs 1–4 finally came together into something I could genuinely be proud of. Architecting multi-screen flows from scratch taught me that planning the navigation graph before writing a single composable saves hours of rework. A real turning point in how I think about app structure.
+
+      <div class="proj-reflection">
+        <div class="proj-reflection-label">💡 Lessons Learned</div>
+        <p class="proj-reflection-text">Project 1 was where Labs 1–4 finally came together into something I could be proud of. Architecting multi-screen flows from scratch taught me that planning the navigation graph before writing a single composable saves hours of rework. A real turning point in how I think about app structure.</p>
       </div>
-      <a href="https://github.com/Sharmila216/StudyMateApp/tree/project1" target="_blank" rel="noopener" class="btn-github">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        View on GitHub
-      </a>
+
+      <div class="proj-bottom">
+        <button class="watch-btn" onclick="openModal('https://www.youtube.com/embed/ZrazGDsYcjk')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          ▶ Watch VSR Demo
+        </button>
+        <a href="https://github.com/Sharmila216/StudyMateApp/tree/project1" target="_blank" rel="noopener" class="btn-github">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub (project1)
+        </a>
+      </div>
     </div>
 
-    <div class="card">
-      <p class="card-number">Project 02</p>
-      <h3 class="card-title">StudyMate — Full-Featured Learning App</h3>
-      <div class="project-tags">
-        <span class="tag">Room DB</span><span class="tag">Firebase</span>
-        <span class="tag">Dictionary API</span><span class="tag">Sensors</span><span class="tag">SDG 4</span>
+    <!-- PROJECT 2 -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-badge-row">
+          <span class="proj-num">Project 02</span>
+          <span class="proj-type">Lab 5 + API + Sensors + Cloud</span>
+        </div>
+        <h3 class="proj-title">StudyMate</h3>
+        <div class="proj-tags">
+          <span class="proj-tag">Room DB</span>
+          <span class="proj-tag">Firebase</span>
+          <span class="proj-tag">Dictionary API</span>
+          <span class="proj-tag">Sensors</span>
+          <span class="proj-tag">SDG 4</span>
+        </div>
+
+        <!-- INFO ROWS -->
+        <div class="proj-info-rows">
+          <div class="proj-info-row">
+            <div class="proj-info-label">📱 App Name</div>
+            <div class="proj-info-value">StudyMate — Full Learning Platform</div>
+          </div>
+          <div class="proj-info-row">
+            <div class="proj-info-label">❓ Problem Statement</div>
+            <div class="proj-info-value">No single student app combines vocabulary lookup, peer-shared study tips, cloud sync, and offline-first persistence. StudyMate Project 2 integrates all of these into one cohesive educational tool aligned with SDG 4.</div>
+          </div>
+          <div class="proj-info-row">
+            <div class="proj-info-label">🎓 SDG Alignment</div>
+            <div class="proj-info-value">SDG 4: Quality Education — combining Dictionary API, community Study Tips, and cloud sync to make quality learning tools accessible to every student.</div>
+          </div>
+        </div>
       </div>
-      <p class="card-desc">No single student app combines vocabulary lookup, peer-shared study tips, cloud sync, and offline-first persistence. StudyMate (Project 2) integrates all of these into one cohesive educational tool aligned with SDG 4.</p>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/KDm40nSkH_Y" title="Project 2 VSR StudyMate Full"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
+
+      <div class="proj-screenshots">
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Project%202_1.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Project 2 Screen 1"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">proj2_screen1.jpg</div></div>
+          </div>
+          <span class="phone-caption">Dictionary screen</span>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <img src="https://raw.githubusercontent.com/Sharmila216/StudyMateApp/Project2/screenshots/Project%202_2.jpg"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 alt="Project 2 Screen 2"/>
+            <div class="phone-ph" style="display:none"><div class="phone-ph-icon">📱</div><div class="phone-ph-text">proj2_screen2.jpg</div></div>
+          </div>
+          <span class="phone-caption">Study Tips community</span>
+        </div>
       </div>
-      <div class="reflection-box">
-        Project 2 pushed every skill I had to its limit — Room for offline persistence, Firebase for real-time cloud backup, a Dictionary API over raw HttpURLConnection, and sensors all working in harmony. The biggest win was designing a system where offline and online data coexist gracefully. I shipped something I am genuinely proud of.
+
+      <div class="proj-reflection">
+        <div class="proj-reflection-label">💡 Lessons Learned</div>
+        <p class="proj-reflection-text">Project 2 pushed every skill I had to its limit — Room for offline persistence, Firebase for real-time cloud backup, a Dictionary API over raw HttpURLConnection, and sensors all working in harmony. The biggest win was designing a system where offline and online data coexist gracefully. I shipped something I am genuinely proud of.</p>
       </div>
-      <a href="https://github.com/Sharmila216/StudyMateApp/tree/Project2" target="_blank" rel="noopener" class="btn-github">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        View on GitHub
-      </a>
+
+      <div class="proj-bottom">
+        <button class="watch-btn" onclick="openModal('https://www.youtube.com/embed/KDm40nSkH_Y')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          ▶ Watch VSR Demo
+        </button>
+        <a href="https://github.com/Sharmila216/StudyMateApp/tree/Project2" target="_blank" rel="noopener" class="btn-github">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub (Project2)
+        </a>
+      </div>
     </div>
 
   </div>
-</section>
+</div>
+</div>
 
 <!-- REFLECTION -->
-<section id="reflection">
-  <p class="section-label">Personal Growth</p>
+<div class="section-outer" id="reflection">
+<div class="section-inner">
+  <p class="section-eyebrow">Personal Growth</p>
   <h2 class="section-title">Reflection & Learning Journey</h2>
-  <div class="section-divider"></div>
-  <div class="reflection-full">
+  <p class="section-sub">Looking back at everything built — from the first composable in Lab 1 to the full cloud-connected app in Project 2.</p>
+
+  <!-- PROJECT SUMMARY CARDS -->
+  <div class="reflect-projects-grid">
+
+    <div class="reflect-proj-card">
+      <div class="reflect-proj-header">
+        <div class="reflect-proj-icon">🏗️</div>
+        <div>
+          <div class="reflect-proj-num">Project 01</div>
+          <div class="reflect-proj-name">StudyMate — Core Navigation App</div>
+        </div>
+      </div>
+      <div class="reflect-proj-tags">
+        <span class="reflect-tag">Kotlin</span>
+        <span class="reflect-tag">Jetpack Compose</span>
+        <span class="reflect-tag">Navigation</span>
+        <span class="reflect-tag">Material Design 3</span>
+      </div>
+      <p class="reflect-proj-desc">
+        <strong>What I built:</strong> A structured multi-screen Android app where students can manage tasks, track exam schedules, and navigate study content — all in one clean interface. This project combined everything from Labs 1 to 4.
+      </p>
+      <div class="reflect-highlight">
+        <div class="reflect-highlight-label">💡 Key Achievement</div>
+        Architected a full navigation graph with 5+ screens, argument passing between destinations, and a polished Material Design 3 theme — all from scratch.
+      </div>
+    </div>
+
+    <div class="reflect-proj-card">
+      <div class="reflect-proj-header">
+        <div class="reflect-proj-icon">🚀</div>
+        <div>
+          <div class="reflect-proj-num">Project 02</div>
+          <div class="reflect-proj-name">StudyMate — Full Learning Platform</div>
+        </div>
+      </div>
+      <div class="reflect-proj-tags">
+        <span class="reflect-tag">Room DB</span>
+        <span class="reflect-tag">Firebase</span>
+        <span class="reflect-tag">Dictionary API</span>
+        <span class="reflect-tag">Sensors</span>
+        <span class="reflect-tag">SDG 4</span>
+      </div>
+      <p class="reflect-proj-desc">
+        <strong>What I built:</strong> A full-featured learning platform with offline-first Room persistence, Firebase cloud sync for Study Tips community, a Free Dictionary API screen, and live device sensors — aligned with SDG 4: Quality Education.
+      </p>
+      <div class="reflect-highlight">
+        <div class="reflect-highlight-label">💡 Key Achievement</div>
+        Designed a hybrid data architecture where Room handles personal data offline and Firebase syncs community content in real-time — both coexisting gracefully in one app.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAIN REFLECTION QUOTE -->
+  <div class="reflection-full" style="margin-top:2rem">
     <p>
       When I started Lab 1, I honestly did not know what a composable function was — now I can architect
       a multi-screen Android app with local persistence, cloud sync, REST APIs, and live device sensors.
@@ -441,16 +767,18 @@ footer{background:rgba(15,32,39,0.97);border-top:1px solid rgba(247,151,30,0.2);
       architecture from Lab 4, and the persistence mastery from Lab 5 all wove together inside StudyMate.
       Building an app that genuinely helps students study better, powered by technology I built myself,
       is the most meaningful thing I have created in my academic journey so far. SDG 4 is not just a label
-      on my portfolio — it is the reason I chose every feature I built.
+      on my portfolio — it is the reason I chose every single feature I built.
     </p>
   </div>
-</section>
+</div>
+</div>
 
 <!-- SKILLS -->
-<section id="skills">
-  <p class="section-label">Technical Expertise</p>
+<div class="section-outer" id="skills" style="background:var(--white)">
+<div class="section-inner">
+  <p class="section-eyebrow">Technical Expertise</p>
   <h2 class="section-title">Skills & Tech Stack</h2>
-  <div class="section-divider"></div>
+  <p class="section-sub" style="margin-bottom:2rem">Technologies and tools I used throughout the course.</p>
   <div class="skills-grid">
     <div class="skill-item"><div class="skill-icon">🎯</div><div class="skill-name">Kotlin</div></div>
     <div class="skill-item"><div class="skill-icon">🧩</div><div class="skill-name">Jetpack Compose</div></div>
@@ -465,107 +793,51 @@ footer{background:rgba(15,32,39,0.97);border-top:1px solid rgba(247,151,30,0.2);
     <div class="skill-item"><div class="skill-icon">🎨</div><div class="skill-name">UI/UX Design</div></div>
     <div class="skill-item"><div class="skill-icon">🤖</div><div class="skill-name">Android Studio</div></div>
   </div>
-</section>
+</div>
+</div>
 
 <!-- RESOURCES -->
-<section id="resources">
-  <p class="section-label">Acknowledgements</p>
+<div class="section-outer" id="resources">
+<div class="section-inner">
+  <p class="section-eyebrow">Acknowledgements</p>
   <h2 class="section-title">Resources Used</h2>
-  <div class="section-divider"></div>
-  <div class="resources-list">
-    <div class="resource-item">
-      <div class="resource-icon">📖</div>
-      <div><div class="resource-title">Free Dictionary API</div><div class="resource-desc">Fetches word definitions, phonetics, and examples via HttpURLConnection in StudyMate's Dictionary screen.</div></div>
-    </div>
-    <div class="resource-item">
-      <div class="resource-icon">🔥</div>
-      <div><div class="resource-title">Firebase Realtime Database</div><div class="resource-desc">Powers the Study Tips Community screen with real-time cloud sync and shared community posts.</div></div>
-    </div>
-    <div class="resource-item">
-      <div class="resource-icon">🗂️</div>
-      <div><div class="resource-title">Room Persistence Library</div><div class="resource-desc">Local SQLite abstraction for storing user profiles, tasks, and exam schedules offline.</div></div>
-    </div>
-    <div class="resource-item">
-      <div class="resource-icon">📚</div>
-      <div><div class="resource-title">Android Jetpack</div><div class="resource-desc">Compose, Navigation, and ViewModel powering the full UI and data architecture of the app.</div></div>
-    </div>
-    <div class="resource-item">
-      <div class="resource-icon">🤖</div>
-      <div><div class="resource-title">AI Assistance — Claude by Anthropic</div><div class="resource-desc">Used for debugging, architecture decisions, and ePortfolio HTML generation throughout development.</div></div>
-    </div>
-    <div class="resource-item">
-      <div class="resource-icon">🎓</div>
-      <div><div class="resource-title">Course Materials — TK2323/TM2213</div><div class="resource-desc">Lecture slides, lab guides, and mentorship from Cikgu Izwan across the semester.</div></div>
-    </div>
+  <p class="section-sub" style="margin-bottom:2rem">APIs, libraries, and tools that powered StudyMate.</p>
+  <div class="resources-grid">
+    <div class="res-item"><div class="res-icon">📖</div><div><div class="res-title">Free Dictionary API</div><div class="res-desc">Fetches word definitions, phonetics, and examples via HttpURLConnection in the Dictionary screen.</div></div></div>
+    <div class="res-item"><div class="res-icon">🔥</div><div><div class="res-title">Firebase Realtime Database</div><div class="res-desc">Powers the Study Tips Community screen with real-time cloud sync and shared community posts.</div></div></div>
+    <div class="res-item"><div class="res-icon">🗂️</div><div><div class="res-title">Room Persistence Library</div><div class="res-desc">Local SQLite abstraction for storing user profiles, tasks, and exam schedules offline.</div></div></div>
+    <div class="res-item"><div class="res-icon">📚</div><div><div class="res-title">Android Jetpack</div><div class="res-desc">Compose, Navigation, and ViewModel powering the full UI and data architecture of the app.</div></div></div>
+    <div class="res-item"><div class="res-icon">🤖</div><div><div class="res-title">AI Assistance — Claude by Anthropic</div><div class="res-desc">Used for debugging, architecture decisions, and ePortfolio HTML generation throughout development.</div></div></div>
+    <div class="res-item"><div class="res-icon">🎓</div><div><div class="res-title">Course Materials — TK2323/TM2213</div><div class="res-desc">Lecture slides, lab guides, and mentorship from Cikgu Izwan across the semester.</div></div></div>
   </div>
-</section>
+</div>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <p style="margin-bottom:0.5rem;color:var(--gold);font-size:1rem;font-weight:700;font-family:'Poppins',sans-serif;letter-spacing:2px;text-transform:uppercase;">
-    SHARMILA A/P K J VADIVAZAGAN
-  </p>
-  <p style="margin-bottom:0.25rem;">Matric No: A216155 &nbsp;·&nbsp; Bachelor of Information Technology (Digital)</p>
-  <p style="margin-bottom:0.25rem;">TK2323/TM2213 Mobile Programming &nbsp;·&nbsp; Instructor: Cikgu Izwan &nbsp;·&nbsp; UKM</p>
-  <p style="margin-top:1rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">© 2026 · Built with 💛 and Jetpack Compose · SDG 4 — Quality Education</p>
+  <div class="footer-name">Sharmila A/P K J Vadivazagan · Matric No. A216155</div>
+  <p style="margin-top:.4rem">Bachelor of Information Technology (Digital) · Mobile Programming</p>
+  <div><span class="footer-sdg">🎓 SDG 4 — Quality Education</span></div>
+  <p style="margin-top:1rem;font-size:.78rem;opacity:.6">© 2026 Sharmila A/P K J Vadivazagan. All rights reserved.</p>
 </footer>
 
 <script>
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-resize();
-window.addEventListener('resize', resize);
-
-const COLS = ['247,151,30','255,210,0','127,255,212','0,201,167','255,200,100','150,220,255'];
-const pts = [];
-const COUNT = 80;
-
-for(let i=0;i<COUNT;i++){
-  pts.push({
-    x: Math.random()*window.innerWidth,
-    y: Math.random()*window.innerHeight,
-    vx: (Math.random()-0.5)*0.5,
-    vy: (Math.random()-0.5)*0.5,
-    r: 1.5 + Math.random()*2,
-    col: COLS[Math.floor(Math.random()*COLS.length)],
-    op: 0.4 + Math.random()*0.5
-  });
+function openModal(src){
+  document.getElementById('modal-iframe').src = src + '?autoplay=1';
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
-
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  pts.forEach(p=>{
-    p.x+=p.vx; p.y+=p.vy;
-    if(p.x<0||p.x>canvas.width) p.vx*=-1;
-    if(p.y<0||p.y>canvas.height) p.vy*=-1;
-    // glow
-    const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);
-    g.addColorStop(0,`rgba(${p.col},${p.op})`);
-    g.addColorStop(1,`rgba(${p.col},0)`);
-    ctx.beginPath(); ctx.arc(p.x,p.y,p.r*4,0,Math.PI*2);
-    ctx.fillStyle=g; ctx.fill();
-    // dot
-    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(${p.col},${p.op})`; ctx.fill();
-  });
-  // connecting lines
-  for(let i=0;i<pts.length;i++){
-    for(let j=i+1;j<pts.length;j++){
-      const d = Math.hypot(pts[i].x-pts[j].x, pts[i].y-pts[j].y);
-      if(d<120){
-        ctx.beginPath();
-        ctx.moveTo(pts[i].x,pts[i].y);
-        ctx.lineTo(pts[j].x,pts[j].y);
-        ctx.strokeStyle=`rgba(247,151,30,${0.18*(1-d/120)})`;
-        ctx.lineWidth=0.6;
-        ctx.stroke();
-      }
-    }
-  }
-  requestAnimationFrame(draw);
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('modal-iframe').src = '';
+  document.body.style.overflow = '';
 }
-draw();
+document.getElementById('modal').addEventListener('click', function(e){
+  if(e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeModal();
+});
 </script>
 </body>
 </html>
